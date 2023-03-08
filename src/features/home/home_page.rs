@@ -1,11 +1,19 @@
 use leptos::*;
 
-use crate::components::layout::*;
+use crate::{
+    components::layout::*,
+    features::home::{banner::*, feed::*},
+};
 
 #[component]
 pub fn HomePage(cx: Scope) -> impl IntoView {
     view! {
         cx,
-        <Layout>"Home Page"</Layout>
+        <Layout>
+            <div class="home-page">
+                <Banner />
+                <Feed />
+            </div>
+        </Layout>
     }
 }
