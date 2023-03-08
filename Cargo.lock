@@ -133,6 +133,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "common_macros"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f3f6d59c71e7dc3af60f0af9db32364d96a16e9310f3f5db2b55ed642162dd35"
+
+[[package]]
 name = "config"
 version = "0.13.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -529,9 +535,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "leptos"
-version = "0.2.0-beta"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8d76f561450c45cc03e1c6421a97d61095df143fcfab5e6367f72fe9ca77879e"
+checksum = "78e81ff7f8d9aff63470df1c34f4da874b3c0389043dced644b6eead70417e37"
 dependencies = [
  "cfg-if",
  "leptos_config",
@@ -551,6 +557,7 @@ dependencies = [
  "console_log",
  "leptos",
  "leptos_meta",
+ "leptos_router",
  "log",
  "serde",
  "serde_json",
@@ -560,9 +567,9 @@ dependencies = [
 
 [[package]]
 name = "leptos_config"
-version = "0.2.0-beta"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eaf90b15e382e43496248a276c534f0c10c32fd14ae524198bb1a22539a1bd7d"
+checksum = "fa3a34d2cf5df5abbaa044fa26aee284dcac45ecc7e5f9a3247c333026c483b2"
 dependencies = [
  "config",
  "fs",
@@ -574,9 +581,9 @@ dependencies = [
 
 [[package]]
 name = "leptos_dom"
-version = "0.2.0-beta"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7957e2a933fee5a1a36ac20230daa6e3bc0ae4cc954d7c796f93b87a1a7ab295"
+checksum = "81252f7fbe11d123c5a471950641bdc11818c8fb04e900043f0f77c25d204952"
 dependencies = [
  "async-recursion",
  "cfg-if",
@@ -602,9 +609,9 @@ dependencies = [
 
 [[package]]
 name = "leptos_macro"
-version = "0.2.0-beta"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f762547c6a9ca099dea6d2a347022738b41324a1d46564408d5a81206d82e450"
+checksum = "7ee20bcdf0a03cd81aefbe80eede8dc4d5f7861175ab880eb728a2952e43aa50"
 dependencies = [
  "cfg-if",
  "convert_case",
@@ -624,9 +631,9 @@ dependencies = [
 
 [[package]]
 name = "leptos_meta"
-version = "0.2.0-beta"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b6e83a581ad3da3df5de24ca407b9fa0a7c0957f0419c8694dde57879fa4233b"
+checksum = "910c47dcf20b4cd1862d20dba4f1ff897a056e560ec02a9f17fa45ce8adc5c23"
 dependencies = [
  "cfg-if",
  "leptos",
@@ -638,9 +645,9 @@ dependencies = [
 
 [[package]]
 name = "leptos_reactive"
-version = "0.2.0-beta"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "56f8a6d1972dbe754b598435ed7eca54421c42c9b13d0420e986e97f682f63bf"
+checksum = "b6324377186e976f10a3059f425333f3b42fb8142d2400138ffbe9bd2e6d3bcd"
 dependencies = [
  "base64 0.21.0",
  "cfg-if",
@@ -658,10 +665,34 @@ dependencies = [
 ]
 
 [[package]]
-name = "leptos_server"
-version = "0.2.0-beta"
+name = "leptos_router"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b858414cdffe79b169f48b791a2df5cd36f29cd1629f90b11dd84e85c9b8c883"
+checksum = "5524eaa07d43c4de73677d46f0b5c47a770d0a61ccb1e3409ab7194a12f1d441"
+dependencies = [
+ "cfg-if",
+ "common_macros",
+ "gloo-net",
+ "js-sys",
+ "lazy_static",
+ "leptos",
+ "linear-map",
+ "log",
+ "percent-encoding",
+ "serde",
+ "serde_urlencoded",
+ "thiserror",
+ "tracing",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+]
+
+[[package]]
+name = "leptos_server"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b80f8a4ca45513511e369f6f3b1368cd23ecbc046a935d42073f1e279117112"
 dependencies = [
  "ciborium",
  "form_urlencoded",
@@ -684,6 +715,12 @@ name = "libc"
 version = "0.2.139"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "201de327520df007757c1f0adce6e827fe8562fbc28bfd9c15571c66ca1f5f79"
+
+[[package]]
+name = "linear-map"
+version = "1.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bfae20f6b19ad527b550c223fddc3077a547fc70cda94b9b566575423fd303ee"
 
 [[package]]
 name = "linked-hash-map"

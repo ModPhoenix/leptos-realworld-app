@@ -4,6 +4,7 @@ pub use app::*;
 
 mod app;
 mod components;
+mod features;
 
 fn main() {
     _ = console_log::init_with_level(log::Level::Debug);

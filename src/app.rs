@@ -1,7 +1,11 @@
 use leptos::*;
 use leptos_meta::*;
+use leptos_router::*;
 
-use crate::components::layout::*;
+use crate::features::{
+    auth::{sign_in_page::*, sign_up_page::*},
+    home::home_page::*,
+};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -10,15 +14,21 @@ pub fn App(cx: Scope) -> impl IntoView {
 
     view! {
         cx,
-        <Title text="Test"/>
-        <HomePage/>
-    }
-}
-
-/// Renders the home page of your application.
-#[component]
-fn HomePage(cx: Scope) -> impl IntoView {
-    view! { cx,
-        <Layout />
+        <Router>
+            <Routes>
+                <Route
+                    path="login"
+                    view=move |cx| view! { cx, <SignInPage /> }
+                />
+                <Route
+                    path="register"
+                    view=move |cx| view! { cx, <SignUpPage /> }
+                />
+                <Route
+                    path=""
+                    view=move |cx| view! { cx, <HomePage /> }
+                />
+            </Routes>
+        </Router>
     }
 }
