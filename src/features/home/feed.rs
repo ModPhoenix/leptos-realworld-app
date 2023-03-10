@@ -41,9 +41,9 @@ pub fn Feed(cx: Scope) -> impl IntoView {
                         <For
                             each=move || articles.clone()
                             key=|article| article.slug.clone()
-                            view=move |cx, _article | {
+                            view=move |cx, article | {
                                 view! { cx,
-                                    <ArticlePreview />
+                                    <ArticlePreview article />
                                 }
                             }
                         />
@@ -60,7 +60,12 @@ pub fn Feed(cx: Scope) -> impl IntoView {
                 <div class="col-md-9">
                     <FeedToggle />
                     <ErrorBoundary fallback>
-                        <Transition fallback=move || view! { cx, <div>"Loading (Suspense Fallback)..."</div>}>
+                        <Transition fallback=move || view! {
+                            cx,
+                            <div class="article-preview" ng-hide="!$ctrl.loading">
+                              "Loading articles..."
+                            </div>
+                        }>
                             {articles_view}
                         </Transition>
                     </ErrorBoundary>
