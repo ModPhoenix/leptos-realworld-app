@@ -8,25 +8,24 @@ use crate::features::{
 };
 
 #[component]
-pub fn App(cx: Scope) -> impl IntoView {
+pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
-    provide_meta_context(cx);
+    provide_meta_context();
 
     view! {
-        cx,
         <Router>
             <Routes>
                 <Route
                     path="login"
-                    view=move |cx| view! { cx, <SignInPage /> }
+                    view=move || view! { <SignInPage /> }
                 />
                 <Route
                     path="register"
-                    view=move |cx| view! { cx, <SignUpPage /> }
+                    view=move || view! {  <SignUpPage /> }
                 />
                 <Route
                     path=""
-                    view=move |cx| view! { cx, <HomePage /> }
+                    view=move || view! {  <HomePage /> }
                 />
             </Routes>
         </Router>

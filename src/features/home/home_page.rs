@@ -6,9 +6,8 @@ use crate::{
 };
 
 #[component]
-pub fn HomePage(cx: Scope) -> impl IntoView {
+pub fn HomePage() -> impl IntoView {
     view! {
-        cx,
         <Layout>
             <div class="home-page">
                 <Banner />

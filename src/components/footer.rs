@@ -1,9 +1,8 @@
 use leptos::*;
 
 #[component]
-pub fn Footer(cx: Scope) -> impl IntoView {
+pub fn Footer() -> impl IntoView {
     view! {
-        cx,
         <footer>
             <div class="container">
                 <a href="/" class="logo-font">"conduit"</a>

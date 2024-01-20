@@ -3,11 +3,8 @@ use leptos::*;
 use crate::api::Article;
 
 #[component]
-pub fn ArticlePreview(cx: Scope, article: Article) -> impl IntoView {
-    log!("article {}", article.updated_at);
-
+pub fn ArticlePreview(article: Article) -> impl IntoView {
     view! {
-        cx,
         <div class="article-preview">
             <div class="article-meta">
                 <a href="profile.html">

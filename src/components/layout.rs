@@ -3,11 +3,10 @@ use leptos::*;
 use crate::components::{footer::*, header::*};
 
 #[component]
-pub fn Layout(cx: Scope, children: Children) -> impl IntoView {
+pub fn Layout(children: Children) -> impl IntoView {
     view! {
-        cx,
         <Header />
-            {children(cx)}
+            {children()}
         <Footer />
     }
 }

@@ -2,9 +2,8 @@ use leptos::*;
 use leptos_router::*;
 
 #[component]
-pub fn Header(cx: Scope) -> impl IntoView {
+pub fn Header() -> impl IntoView {
     view! {
-        cx,
         <nav class="navbar navbar-light">
             <div class="container">
             <A class="navbar-brand" href="/">"conduit"</A>

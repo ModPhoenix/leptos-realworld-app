@@ -1,9 +1,8 @@
 use leptos::*;
 
 #[component]
-pub fn Tags(cx: Scope) -> impl IntoView {
+pub fn Tags() -> impl IntoView {
     view! {
-        cx,
         <div class="sidebar">
             <p>"Popular Tags"</p>
             <div class="tag-list">

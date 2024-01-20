@@ -3,9 +3,8 @@ use leptos::*;
 use crate::components::layout::*;
 
 #[component]
-pub fn SignInPage(cx: Scope) -> impl IntoView {
+pub fn SignInPage() -> impl IntoView {
     view! {
-        cx,
         <Layout>"Sign In Page"</Layout>
     }
 }

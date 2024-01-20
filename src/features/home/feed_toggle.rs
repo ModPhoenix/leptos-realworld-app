@@ -1,9 +1,8 @@
 use leptos::*;
 
 #[component]
-pub fn FeedToggle(cx: Scope) -> impl IntoView {
+pub fn FeedToggle() -> impl IntoView {
     view! {
-        cx,
         <div class="feed-toggle">
             <ul class="nav nav-pills outline-active">
                 <li class="nav-item">

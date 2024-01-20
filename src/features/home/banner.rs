@@ -1,9 +1,8 @@
 use leptos::*;
 
 #[component]
-pub fn Banner(cx: Scope) -> impl IntoView {
+pub fn Banner() -> impl IntoView {
     view! {
-        cx,
         <div class="banner">
             <div class="container">
                 <h1 class="logo-font">"conduit"</h1>

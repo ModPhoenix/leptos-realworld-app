@@ -6,20 +6,20 @@ use crate::{
 };
 
 #[component]
-pub fn Feed(cx: Scope) -> impl IntoView {
-    let articles = create_local_resource(cx, move || (), |_| get_articles());
+pub fn Feed() -> impl IntoView {
+    let articles = create_local_resource(move || (), |_| get_articles());
 
-    let fallback = move |cx, errors: RwSignal<Errors>| {
+    let fallback = move |errors: RwSignal<Errors>| {
         let error_list = move || {
             errors.with(|errors| {
                 errors
                     .iter()
-                    .map(|(_, e)| view! { cx, <li>{e.to_string()}</li>})
+                    .map(|(_, e)| view! {<li>{e.to_string()}</li>})
                     .collect::<Vec<_>>()
             })
         };
 
-        view! { cx,
+        view! {
             <div class="error">
                 <h2>"Error"</h2>
                 <ul>{error_list}</ul>
@@ -30,38 +30,23 @@ pub fn Feed(cx: Scope) -> impl IntoView {
     // the renderer can handle Option<_> and Result<_> states
     // by displaying nothing for None if the resource is still loading
     // and by using the ErrorBoundary fallback to catch Err(_)
-    // so we'll just implement our happy path and let the framework handle the rest
+    // so we'll just use `.and_then()` to map over the happy path
     let articles_view = move || {
-        articles.with(cx, |data| {
-            data.iter()
-                .map(|res| res.articles.clone())
-                .map(|articles| {
-                    view! {
-                        cx,
-                        <For
-                            each=move || articles.clone()
-                            key=|article| article.slug.clone()
-                            view=move |cx, article | {
-                                view! { cx,
-                                    <ArticlePreview article />
-                                }
-                            }
-                        />
-                    }
-                })
-                .collect::<Vec<_>>()
+        articles.and_then(|data| {
+            data.articles
+                .iter()
+                .map(|article| view! { <ArticlePreview article=article.clone() /> })
+                .collect_view()
         })
     };
 
     view! {
-        cx,
         <div class="container page">
             <div class="row">
                 <div class="col-md-9">
                     <FeedToggle />
                     <ErrorBoundary fallback>
                         <Transition fallback=move || view! {
-                            cx,
                             <div class="article-preview" ng-hide="!$ctrl.loading">
                               "Loading articles..."
                             </div>
